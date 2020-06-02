@@ -31,9 +31,12 @@ class MainActivity : BaseActivity1() {
         studentListView.setOnItemLongClickListener { parent, view, position, id ->
 
             //Toast.makeText(mContext,"${students.get(position).name}",Toast.LENGTH_SHORT).show()
-            Toast.makeText(mContext,"${students[position].name}을 오래누름",Toast.LENGTH_SHORT).show()
-            //return@setOnItemLongClickListener true //롱클릭 이벤트만 실행
-            return@setOnItemLongClickListener false //모든 클릭이벤트를 실행시킴
+            //Toast.makeText(mContext,"${students[position].name}을 오래누름",Toast.LENGTH_SHORT).show()
+
+            students.removeAt(position)
+            studentAdapter.notifyDataSetChanged()
+            return@setOnItemLongClickListener true //롱클릭 이벤트만 실행
+            //return@setOnItemLongClickListener false //모든 클릭이벤트를 실행시킴
 
         }
     }
