@@ -1,5 +1,7 @@
 package com.example.listview_20200601
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -33,8 +35,17 @@ class MainActivity : BaseActivity1() {
             //Toast.makeText(mContext,"${students.get(position).name}",Toast.LENGTH_SHORT).show()
             //Toast.makeText(mContext,"${students[position].name}을 오래누름",Toast.LENGTH_SHORT).show()
 
-            students.removeAt(position)
-            studentAdapter.notifyDataSetChanged()
+            val alert = AlertDialog.Builder(mContext)
+            alert.setTitle("삭제확인")
+            alert.setMessage("정말 이 학생을 삭제하시겠습니까?")
+            alert.setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
+
+                students.removeAt(position)
+                studentAdapter.notifyDataSetChanged()
+            })
+
+            alert.setNegativeButton("취소",null)
+            alert.show()
             return@setOnItemLongClickListener true //롱클릭 이벤트만 실행
             //return@setOnItemLongClickListener false //모든 클릭이벤트를 실행시킴
 
