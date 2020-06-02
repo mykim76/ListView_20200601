@@ -27,6 +27,15 @@ class MainActivity : BaseActivity1() {
             //Toast.makeText(mContext,"${psition}번 줄 클락",Toast.LENGTH_SHORT).show()
             Toast.makeText(mContext,"${students.get(position).name}",Toast.LENGTH_SHORT).show()
         }
+
+        studentListView.setOnItemLongClickListener { parent, view, position, id ->
+
+            //Toast.makeText(mContext,"${students.get(position).name}",Toast.LENGTH_SHORT).show()
+            Toast.makeText(mContext,"${students[position].name}을 오래누름",Toast.LENGTH_SHORT).show()
+            //return@setOnItemLongClickListener true //롱클릭 이벤트만 실행
+            return@setOnItemLongClickListener false //모든 클릭이벤트를 실행시킴
+
+        }
     }
 
     override fun setValues() {
