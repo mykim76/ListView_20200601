@@ -16,9 +16,10 @@ class StudentAdapter(context:Context,resId:Int,list:List<Student>):ArrayAdapter<
     val inf = LayoutInflater.from(mContext)
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        //convertView 변수에 재사용할 뷰가 담겨서 getView가 실행됨
         var tempRow = convertView
 
-        if (tempRow == null) {
+        if (tempRow == null) { // 재사용할 XML(List Item) 이 없는 경우(처음 몇개를 그릴때는 아직 없겠지?)
             tempRow = inf.inflate(R.layout.student_list_item, null)
         }
         val row = tempRow!!

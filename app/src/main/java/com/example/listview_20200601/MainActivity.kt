@@ -2,6 +2,7 @@ package com.example.listview_20200601
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.listview_20200601.adapters.StudentAdapter
 import com.example.listview_20200601.datas.Student
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,6 +22,11 @@ class MainActivity : BaseActivity1() {
     }
 
     override fun setupEvents() {
+
+        studentListView.setOnItemClickListener { parent, view, position, id ->
+            //Toast.makeText(mContext,"${psition}번 줄 클락",Toast.LENGTH_SHORT).show()
+            Toast.makeText(mContext,"${students.get(position).name}",Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun setValues() {
